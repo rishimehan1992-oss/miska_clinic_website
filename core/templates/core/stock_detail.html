@@ -1,0 +1,270 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ symbol }} - Stock Detail | QuantsCase</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .detail-header h1 {
+            font-size: 2rem;
+            color: #1e293b;
+        }
+
+        .badge-symbol {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #e0e7ff;
+            color: #3730a3;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(15,23,42,0.05);
+        }
+
+        .card h2 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #0f172a;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px 16px;
+            font-size: 0.9rem;
+        }
+
+        .metric-label {
+            color: #64748b;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 380px;
+        }
+
+        .error-box {
+            padding: 16px;
+            border-radius: 8px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #b91c1c;
+            margin-top: 16px;
+        }
+
+        @media (max-width: 1024px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">QuantsCase</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/screener">Stock Screener</a></li>
+            </ul>
+
+            <div class="nav-buttons">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="detail-container">
+        <div class="detail-header">
+            <div>
+                <h1>
+                    {{ symbol }}
+                    <span class="badge-symbol">EOD</span>
+                </h1>
+                {% if indicators %}
+                    <p style="color:#64748b; margin-top:4px;">
+                        Current price: <strong>₹{{ indicators.current_price }}</strong>
+                        &nbsp;|&nbsp;
+                        1D: <strong class="{% if indicators.pct_1d >= 0 %}positive{% else %}negative{% endif %}">
+                            {{ indicators.pct_1d }}%
+                        </strong>
+                    </p>
+                {% endif %}
+            </div>
+            <a href="{% url 'screener' %}" class="btn-login" style="text-decoration:none;">← Back to Screener</a>
+        </div>
+
+        {% if error %}
+            <div class="error-box">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <div class="detail-grid">
+            <div class="card">
+                <h2>Price history</h2>
+                <div class="chart-wrapper">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Key indicators</h2>
+                {% if indicators %}
+                    <div class="metric-grid">
+                        <div class="metric-label">1W %</div>
+                        <div class="metric-value">{{ indicators.pct_1w }}%</div>
+
+                        <div class="metric-label">1M %</div>
+                        <div class="metric-value">{{ indicators.pct_1m }}%</div>
+
+                        <div class="metric-label">3M %</div>
+                        <div class="metric-value">{{ indicators.pct_3m }}%</div>
+
+                        <div class="metric-label">1Y %</div>
+                        <div class="metric-value">{{ indicators.pct_1y }}%</div>
+
+                        <div class="metric-label">RSI</div>
+                        <div class="metric-value">
+                            {% if indicators.rsi %}{{ indicators.rsi }}{% else %}-{% endif %}
+                        </div>
+
+                        <div class="metric-label">Volatility (30d)</div>
+                        <div class="metric-value">
+                            {% if indicators.volatility_30d %}{{ indicators.volatility_30d }}%{% else %}-{% endif %}
+                        </div>
+
+                        <div class="metric-label">MA 20 / 50 / 200</div>
+                        <div class="metric-value">
+                            {% if indicators.ma_20 %}{{ indicators.ma_20 }}{% else %}-{% endif %} /
+                            {% if indicators.ma_50 %}{{ indicators.ma_50 }}{% else %}-{% endif %} /
+                            {% if indicators.ma_200 %}{{ indicators.ma_200 }}{% else %}-{% endif %}
+                        </div>
+
+                        <div class="metric-label">52W High / Low</div>
+                        <div class="metric-value">
+                            {{ indicators.high_52w }} / {{ indicators.low_52w }}
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="color:#64748b;">No indicators available for this stock.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rawData = {{ chart_data|safe }};
+
+        if (rawData && rawData.length) {
+            const labels = rawData.map(p => p.date);
+            const closeData = rawData.map(p => p.close);
+            const ma20Data = rawData.map(p => p.ma20);
+
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Close',
+                            data: closeData,
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            tension: 0.2,
+                            borderWidth: 2,
+                            pointRadius: 0,
+                        },
+                        {
+                            label: 'MA 20',
+                            data: ma20Data,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                            tension: 0.2,
+                            borderWidth: 2,
+                            pointRadius: 0,
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            ticks: {
+                                maxTicksLimit: 8,
+                            },
+                            grid: {
+                                display: false,
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                callback: (val) => '₹' + val,
+                            },
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.15)',
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    const label = context.dataset.label || '';
+                                    return label + ': ₹' + context.parsed.y.toFixed(2);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+

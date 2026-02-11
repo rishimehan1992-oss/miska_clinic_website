@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantsCase - Smart Stock Research Platform</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">QuantsCase</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="/screener">Stock Screener</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Get Started</a>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Smart Stock Research Made Simple</h1>
+            <p class="hero-subtitle">
+                AI-powered screeners, real-time analytics, and data-driven insights 
+                to help you make better investment decisions.
+            </p>
+            <div class="hero-buttons">
+                <a href="/screener" class="btn-primary">Try Stock Screener</a>
+                <a href="#features" class="btn-secondary">Learn More →</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <h3>5000+</h3>
+                    <p>Stocks Covered</p>
+                </div>
+                <div class="stat">
+                    <h3>50+</h3>
+                    <p>Indicators</p>
+                </div>
+                <div class="stat">
+                    <h3>Real-Time</h3>
+                    <p>Data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Powerful Tools for Smart Investors</h2>
+            <p class="section-subtitle">Everything you need to research and analyze stocks</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Advanced Screeners</h3>
+                    <p>Filter stocks by momentum, value, breakout patterns, and custom criteria.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Live market data, technical indicators, and fundamental analysis.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Custom Strategies</h3>
+                    <p>Build and backtest your own trading strategies with ease.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Ready</h3>
+                    <p>Access your research anywhere with fully responsive design.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Smart Alerts</h3>
+                    <p>Get notified when stocks meet your criteria instantly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure & Private</h3>
+                    <p>Bank-level encryption. Your data stays private always.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <div class="container">
+            <h2 class="section-title">Professional Research Tools</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>📉 Stock Screener</h3>
+                    <p>Find stocks matching your criteria from NSE & BSE</p>
+                    <a href="/screener" class="tool-link">Launch Screener →</a>
+                </div>
+                
+                <div class="tool-card">
+                    <h3>📊 Technical Analysis</h3>
+                    <p>50+ indicators including RSI, MACD, Bollinger Bands</p>
+                    <a href="#" class="tool-link">Coming Soon →</a>
+                </div>
+                
+                <div class="tool-card">
+                    <h3>💰 Fundamental Scanner</h3>
+                    <p>PE ratio, debt levels, profit margins & more</p>
+                    <a href="#" class="tool-link">Coming Soon →</a>
+                </div>
+                
+                <div class="tool-card">
+                    <h3>📅 Earnings Calendar</h3>
+                    <p>Track upcoming earnings, dividends & events</p>
+                    <a href="#" class="tool-link">Coming Soon →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">₹0<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Basic stock screener</li>
+                        <li>✓ 20 stocks limit</li>
+                        <li>✓ Delayed data (15 min)</li>
+                        <li>✓ 5 indicators</li>
+                    </ul>
+                    <a href="/signup" class="pricing-btn">Get Started</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro</h3>
+                    <div class="price">₹999<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li>✓ Advanced screeners</li>
+                        <li>✓ Unlimited stocks</li>
+                        <li>✓ Real-time data</li>
+                        <li>✓ 50+ indicators</li>
+                        <li>✓ Smart alerts</li>
+                        <li>✓ Backtest strategies</li>
+                    </ul>
+                    <a href="/signup" class="pricing-btn">Start Free Trial</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">Custom</div>
+                    <ul class="pricing-features">
+                        <li>✓ Everything in Pro</li>
+                        <li>✓ API access</li>
+                        <li>✓ Custom integrations</li>
+                        <li>✓ Priority support</li>
+                        <li>✓ Team accounts</li>
+                    </ul>
+                    <a href="/contact" class="pricing-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>QuantsCase</h3>
+                    <p>Smart stock research platform for Indian investors.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="/screener">Screener</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="#terms">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 QuantsCase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

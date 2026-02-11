@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Hair Health Assessment at MIŠKA Bangalore. Complete our questionnaire and get a personalised hair profile and recommendations." />
+    <title>Hair Health Assessment | MIŠKA Clinic Bangalore</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="assets/miska-logo.png" alt="MIŠKA – Hair | Dental | Skin" />
+          <span class="logo-tagline">HAIR | DENTAL | SKIN</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li class="has-dropdown">
+              <a href="about.html" title="About Us">About</a>
+              <ul class="nav-dropdown">
+                <li><a href="about.html#team">Our Team</a></li>
+                <li><a href="about.html#why">Why Choose Us</a></li>
+              </ul>
+            </li>
+            <li class="has-dropdown">
+              <a href="hair-transplant.html" title="Hair Transplant">Hair</a>
+              <ul class="nav-dropdown">
+                <li><a href="hair-transplant.html">Overview</a></li>
+                <li><a href="hair-transplant-cost.html">Cost</a></li>
+                <li><a href="hair-transplant-process.html">Process</a></li>
+                <li><a href="hair-transplant-techniques.html">Techniques</a></li>
+                <li><a href="hair-transplant-results.html">Results</a></li>
+                <li><a href="hair-transplant-before-after.html">Before & After</a></li>
+                <li><a href="hair-profile.html" class="active">Hair Profile</a></li>
+              </ul>
+            </li>
+            <li><a href="dental.html" title="Dental">Dental</a></li>
+            <li><a href="laser-hair-removal.html" title="Laser Hair Removal">Laser</a></li>
+            <li><a href="skin-care.html" title="Skin Care">Skin</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="header-cta">
+          <a href="tel:+919380843143" class="btn btn-outline">Call Now</a>
+          <a href="contact.html" class="btn btn-gold">Free Consultation</a>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="page-hero page-hero-profile">
+        <nav class="breadcrumb">
+          <a href="index.html">Home</a> / <a href="hair-transplant.html">Hair</a> / Hair Profile
+        </nav>
+        <h1>Hair Health Assessment</h1>
+        <p class="page-hero-subtitle">Complete this quick questionnaire to get your personalised hair profile and recommendations from MIŠKA Clinic.</p>
+      </section>
+
+      <section class="section hair-profile-section">
+        <div class="container" style="max-width: 700px; margin: 0 auto;">
+          <form id="hairProfileForm" class="hair-profile-form">
+            <div class="hair-profile-progress">
+              <div class="hair-profile-progress-bar" id="progressBar" style="width: 20%;"></div>
+            </div>
+            <p class="hair-profile-step-label" id="stepLabel">Step 1 of 5</p>
+
+            <!-- Step 1: Basic Info -->
+            <div class="hair-profile-step" data-step="1">
+              <h2>Basic Information</h2>
+              <label>Age <input type="number" name="age" min="18" max="80" placeholder="e.g. 32" required /></label>
+              <label>Gender
+                <select name="gender" required>
+                  <option value="">Select</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label>How long have you been experiencing hair loss or thinning?
+                <select name="duration">
+                  <option value="">Select</option>
+                  <option value="6m">Less than 6 months</option>
+                  <option value="1y">6 months – 2 years</option>
+                  <option value="3y">2 – 5 years</option>
+                  <option value="5y">More than 5 years</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Step 2: Family & Pattern -->
+            <div class="hair-profile-step" data-step="2" hidden>
+              <h2>Family History & Pattern</h2>
+              <label>Does anyone in your family have hair loss?
+                <select name="familyHistory">
+                  <option value="">Select</option>
+                  <option value="yes_father">Yes, father</option>
+                  <option value="yes_mother">Yes, mother</option>
+                  <option value="yes_both">Yes, both parents</option>
+                  <option value="yes_other">Yes, other relative</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+              <label>Where is your main concern?
+                <select name="mainConcern">
+                  <option value="">Select</option>
+                  <option value="hairline">Hairline / temples</option>
+                  <option value="crown">Crown / top</option>
+                  <option value="overall">Overall thinning</option>
+                  <option value="multiple">Multiple areas</option>
+                </select>
+              </label>
+              <label>Which best describes your hairline? (Select the stage that matches you)
+                <select name="hairlineStage">
+                  <option value="">Select</option>
+                  <option value="1">1 – Minimal (slight temple recession)</option>
+                  <option value="2">2 – Mild (noticeable recession)</option>
+                  <option value="3">3 – Moderate (frontal third)</option>
+                  <option value="4">4 – Advanced (frontal + crown)</option>
+                  <option value="5">5 – Extensive (full scalp coverage needed)</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Step 3: Scalp & Hair -->
+            <div class="hair-profile-step" data-step="3" hidden>
+              <h2>Scalp & Hair Characteristics</h2>
+              <label>Any scalp issues?
+                <select name="scalpIssues">
+                  <option value="">Select</option>
+                  <option value="none">None</option>
+                  <option value="itching">Itching</option>
+                  <option value="flaking">Flaking / dandruff</option>
+                  <option value="oily">Oily scalp</option>
+                  <option value="dry">Dry scalp</option>
+                  <option value="multiple">Multiple issues</option>
+                </select>
+              </label>
+              <label>Hair texture
+                <select name="hairTexture">
+                  <option value="">Select</option>
+                  <option value="straight">Straight</option>
+                  <option value="wavy">Wavy</option>
+                  <option value="curly">Curly</option>
+                </select>
+              </label>
+              <label>Perceived hair thickness
+                <select name="hairThickness">
+                  <option value="">Select</option>
+                  <option value="fine">Fine</option>
+                  <option value="medium">Medium</option>
+                  <option value="thick">Thick</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Step 4: Lifestyle & Medical -->
+            <div class="hair-profile-step" data-step="4" hidden>
+              <h2>Lifestyle & Medical</h2>
+              <label>Stress level
+                <select name="stress">
+                  <option value="">Select</option>
+                  <option value="low">Low</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+              <label>Do you smoke?
+                <select name="smoking">
+                  <option value="">Select</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </label>
+              <label>Any known conditions that can affect hair? (thyroid, anaemia, PCOS, etc.)
+                <select name="medicalConditions">
+                  <option value="">Select</option>
+                  <option value="none">None</option>
+                  <option value="thyroid">Thyroid</option>
+                  <option value="anaemia">Anaemia</option>
+                  <option value="pcos">PCOS</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+              <label>Previous hair treatments?
+                <select name="previousTreatment">
+                  <option value="">Select</option>
+                  <option value="none">None</option>
+                  <option value="prp">PRP</option>
+                  <option value="minoxidil">Minoxidil</option>
+                  <option value="finasteride">Finasteride</option>
+                  <option value="transplant">Hair transplant</option>
+                  <option value="other">Other</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Step 5: Goals & Contact -->
+            <div class="hair-profile-step" data-step="5" hidden>
+              <h2>Goals & Contact</h2>
+              <label>Primary goal
+                <select name="goal">
+                  <option value="">Select</option>
+                  <option value="stop">Stop further loss</option>
+                  <option value="restore">Restore density</option>
+                  <option value="transplant">Hair transplant</option>
+                  <option value="consult">Just exploring / consultation</option>
+                </select>
+              </label>
+              <label>Name <input type="text" name="name" placeholder="Your name" required /></label>
+              <label>Phone <input type="tel" name="phone" placeholder="10-digit mobile" required /></label>
+              <label>Email <input type="email" name="email" placeholder="your@email.com" /></label>
+              <label>Preferred contact
+                <select name="contactPref">
+                  <option value="call">Call</option>
+                  <option value="whatsapp">WhatsApp</option>
+                  <option value="email">Email</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="hair-profile-nav">
+              <button type="button" class="btn btn-outline" id="btnPrev" disabled>Previous</button>
+              <button type="button" class="btn btn-gold" id="btnNext">Next</button>
+              <button type="submit" class="btn btn-gold" id="btnSubmit" hidden>Get My Report</button>
+            </div>
+          </form>
+
+          <div id="hairProfileReport" class="hair-profile-report" hidden>
+            <h2>Your Hair Profile Report</h2>
+            <p class="hair-report-intro">Based on your responses, here is your personalised hair health summary. This is indicative — a physical consultation at MIŠKA will provide an accurate assessment.</p>
+            <div class="hair-report-content" id="hairReportContent"></div>
+            <div class="hair-report-cta">
+              <h3>Next Step: Free Consultation</h3>
+              <p>Our experts will review your profile and recommend the best treatment plan for you.</p>
+              <a href="tel:+919380843143" class="btn btn-gold">Call +91 93808 43143</a>
+              <a href="https://wa.me/919380843143" target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a>
+              <a href="contact.html" class="btn btn-outline">Book Online</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-logo">
+          <a href="index.html"><img src="assets/miska-logo.png" alt="MIŠKA" /></a>
+          <p class="footer-tagline">HAIR | DENTAL | SKIN</p>
+        </div>
+        <nav class="footer-nav">
+          <a href="hair-transplant.html">Hair</a>
+          <a href="dental.html">Dental</a>
+          <a href="laser-hair-removal.html">Laser</a>
+          <a href="skin-care.html">Skin</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> MIŠKA Hair, Dental & Skin Clinic. Bangalore.</p>
+      </div>
+    </footer>
+
+    <div class="float-cta">
+      <a href="tel:+919380843143" class="float-btn float-call" aria-label="Call clinic"><span class="float-icon">📞</span><span class="float-text">Call</span></a>
+      <a href="https://wa.me/919380843143" target="_blank" rel="noopener" class="float-btn float-whatsapp" aria-label="WhatsApp"><span class="float-icon">💬</span><span class="float-text">WhatsApp</span></a>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script>
+      (function() {
+        var form = document.getElementById('hairProfileForm');
+        var report = document.getElementById('hairProfileReport');
+        var reportContent = document.getElementById('hairReportContent');
+        var steps = form.querySelectorAll('.hair-profile-step');
+        var progressBar = document.getElementById('progressBar');
+        var stepLabel = document.getElementById('stepLabel');
+        var btnPrev = document.getElementById('btnPrev');
+        var btnNext = document.getElementById('btnNext');
+        var btnSubmit = document.getElementById('btnSubmit');
+        var currentStep = 1;
+        var totalSteps = 5;
+
+        function showStep(n) {
+          steps.forEach(function(s) { s.hidden = parseInt(s.dataset.step) !== n; });
+          currentStep = n;
+          progressBar.style.width = (n / totalSteps * 100) + '%';
+          stepLabel.textContent = 'Step ' + n + ' of ' + totalSteps;
+          btnPrev.disabled = n === 1;
+          btnNext.hidden = n === totalSteps;
+          btnSubmit.hidden = n !== totalSteps;
+        }
+
+        function validateStep() {
+          var step = form.querySelector('.hair-profile-step[data-step="' + currentStep + '"]');
+          var inputs = step.querySelectorAll('input[required], select[required]');
+          for (var i = 0; i < inputs.length; i++) {
+            if (!inputs[i].value.trim()) return false;
+          }
+          return true;
+        }
+
+        btnPrev.addEventListener('click', function() {
+          if (currentStep > 1) showStep(currentStep - 1);
+        });
+        btnNext.addEventListener('click', function() {
+          if (validateStep() && currentStep < totalSteps) showStep(currentStep + 1);
+        });
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          if (!validateStep()) return;
+
+          var fd = new FormData(form);
+          var data = {};
+          fd.forEach(function(v, k) { data[k] = v; });
+
+          var hairlineLabels = { '1':'Minimal', '2':'Mild', '3':'Moderate', '4':'Advanced', '5':'Extensive' };
+          var durationLabels = { '6m':'Less than 6 months', '1y':'6 months – 2 years', '3y':'2 – 5 years', '5y':'More than 5 years' };
+          var goalLabels = { 'stop':'Stop further loss', 'restore':'Restore density', 'transplant':'Hair transplant', 'consult':'Consultation' };
+
+          var html = '<div class="hair-report-grid">';
+          html += '<div class="hair-report-card"><h4>Profile Summary</h4><ul>';
+          html += '<li><strong>Age:</strong> ' + (data.age || '—') + '</li>';
+          html += '<li><strong>Gender:</strong> ' + (data.gender === 'male' ? 'Male' : 'Female') + '</li>';
+          html += '<li><strong>Hair loss duration:</strong> ' + (durationLabels[data.duration] || data.duration || '—') + '</li>';
+          html += '<li><strong>Main concern:</strong> ' + (data.mainConcern ? data.mainConcern.replace(/_/g, ' ') : '—') + '</li>';
+          html += '<li><strong>Hairline stage:</strong> ' + (hairlineLabels[data.hairlineStage] || data.hairlineStage || '—') + '</li>';
+          html += '<li><strong>Goal:</strong> ' + (goalLabels[data.goal] || data.goal || '—') + '</li>';
+          html += '</ul></div>';
+
+          html += '<div class="hair-report-card"><h4>Hair & Scalp</h4><ul>';
+          html += '<li><strong>Scalp:</strong> ' + (data.scalpIssues || 'None reported') + '</li>';
+          html += '<li><strong>Texture:</strong> ' + (data.hairTexture || '—') + '</li>';
+          html += '<li><strong>Thickness:</strong> ' + (data.hairThickness || '—') + '</li>';
+          html += '<li><strong>Family history:</strong> ' + (data.familyHistory ? 'Yes' : 'No') + '</li>';
+          html += '</ul></div>';
+
+          html += '<div class="hair-report-card"><h4>Lifestyle & History</h4><ul>';
+          html += '<li><strong>Stress:</strong> ' + (data.stress || '—') + '</li>';
+          html += '<li><strong>Smoking:</strong> ' + (data.smoking === 'yes' ? 'Yes' : 'No') + '</li>';
+          html += '<li><strong>Medical conditions:</strong> ' + (data.medicalConditions || 'None') + '</li>';
+          html += '<li><strong>Previous treatment:</strong> ' + (data.previousTreatment || 'None') + '</li>';
+          html += '</ul></div></div>';
+
+          var stage = parseInt(data.hairlineStage) || 3;
+          var graftRange = stage <= 1 ? '1,500–2,000' : stage <= 2 ? '2,000–3,000' : stage <= 3 ? '2,800–4,000' : stage <= 4 ? '4,000–6,000' : '5,500–9,000';
+          var costRange = stage <= 1 ? '₹35,000' : stage <= 2 ? '₹35,000–₹45,000' : stage <= 3 ? '₹45,000–₹55,000' : stage <= 4 ? '₹55,000–₹65,000' : '₹65,000–₹80,000';
+
+          html += '<div class="hair-report-estimate"><h4>Indicative Estimate (if considering transplant)</h4>';
+          html += '<p>Based on your hairline stage: <strong>~' + graftRange + ' grafts</strong>, estimated cost <strong>' + costRange + '</strong>. Exact figures will be confirmed during consultation.</p></div>';
+
+          reportContent.innerHTML = html;
+          form.hidden = true;
+          report.hidden = false;
+          report.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        showStep(1);
+      })();
+    </script>
+  </body>
+</html>

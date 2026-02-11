@@ -1,0 +1,439 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Screener - QuantsCase</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .screener-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+        }
+        
+        .screener-header {
+            margin-bottom: 30px;
+        }
+        
+        .screener-header h1 {
+            font-size: 2.5rem;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+        
+        .screener-header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .screener-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+        
+        .filters-panel {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .filters-panel h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 0.9rem;
+        }
+        
+        .filter-group input[type="number"],
+        .filter-group input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+        
+        .filter-group input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+        
+        .filter-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+        
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .btn-screener {
+            width: 100%;
+            padding: 12px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-screener:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+        
+        .btn-reset {
+            width: 100%;
+            padding: 10px;
+            background: #e2e8f0;
+            color: #334155;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-reset:hover {
+            background: #cbd5e1;
+        }
+        
+        .results-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .results-header h2 {
+            font-size: 1.5rem;
+            color: #1e293b;
+        }
+        
+        .results-count {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+        }
+        
+        .results-table thead {
+            background: #f1f5f9;
+        }
+        
+        .results-table th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .results-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        
+        .results-table tbody tr:hover {
+            background: #f8fafc;
+        }
+        
+        .symbol-cell {
+            font-weight: 700;
+            color: #6366f1;
+        }
+        
+        .price-cell {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .positive {
+            color: #10b981;
+        }
+        
+        .negative {
+            color: #ef4444;
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+        
+        .no-data-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .no-data h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #334155;
+        }
+        
+        .info-banner {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .info-banner p {
+            color: #1e40af;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .screener-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-panel {
+                position: static;
+            }
+        }
+        
+        .results-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 768px) {
+            .results-table {
+                font-size: 0.85rem;
+            }
+            
+            .results-table th,
+            .results-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">QuantsCase</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/screener" class="active">Stock Screener</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            
+            <div class="nav-buttons">
+                <a href="/login" class="btn-login">Login</a>
+                <a href="/signup" class="btn-signup">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="screener-container">
+        <div class="screener-header">
+            <h1>Stock Screener</h1>
+            <p>Filter and discover stocks based on technical indicators and price movements</p>
+        </div>
+
+        <div class="screener-layout">
+            <!-- Filters Panel -->
+            <div class="filters-panel">
+                <h2>Filters</h2>
+                <form method="GET" action="{% url 'screener' %}">
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <input type="number" name="min_price" placeholder="Min Price" step="0.01" value="{{ filters.min_price|default:'' }}">
+                        <input type="number" name="max_price" placeholder="Max Price" step="0.01" value="{{ filters.max_price|default:'' }}" style="margin-top: 8px;">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>1 Day Change (%)</label>
+                        <input type="number" name="min_pct_1d" placeholder="Min %" step="0.1" value="{{ filters.min_pct_1d|default:'' }}">
+                        <input type="number" name="max_pct_1d" placeholder="Max %" step="0.1" value="{{ filters.max_pct_1d|default:'' }}" style="margin-top: 8px;">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>1 Month Change (%)</label>
+                        <input type="number" name="min_pct_1m" placeholder="Min %" step="0.1" value="{{ filters.min_pct_1m|default:'' }}">
+                        <input type="number" name="max_pct_1m" placeholder="Max %" step="0.1" value="{{ filters.max_pct_1m|default:'' }}" style="margin-top: 8px;">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>3 Month Change (%)</label>
+                        <input type="number" name="min_pct_3m" placeholder="Min %" step="0.1" value="{{ filters.min_pct_3m|default:'' }}">
+                        <input type="number" name="max_pct_3m" placeholder="Max %" step="0.1" value="{{ filters.max_pct_3m|default:'' }}" style="margin-top: 8px;">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>RSI Range</label>
+                        <input type="number" name="min_rsi" placeholder="Min RSI" step="0.1" min="0" max="100" value="{{ filters.min_rsi|default:'' }}">
+                        <input type="number" name="max_rsi" placeholder="Max RSI" step="0.1" min="0" max="100" value="{{ filters.max_rsi|default:'' }}" style="margin-top: 8px;">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Volume Ratio</label>
+                        <input type="number" name="min_volume_ratio" placeholder="Min Volume Ratio" step="0.1" value="{{ filters.min_volume_ratio|default:'' }}">
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Moving Averages</label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="above_ma_20" {% if filters.above_ma_20 %}checked{% endif %}>
+                            Above MA 20
+                        </label>
+                        <label class="checkbox-label" style="margin-top: 8px;">
+                            <input type="checkbox" name="above_ma_50" {% if filters.above_ma_50 %}checked{% endif %}>
+                            Above MA 50
+                        </label>
+                        <label class="checkbox-label" style="margin-top: 8px;">
+                            <input type="checkbox" name="above_ma_200" {% if filters.above_ma_200 %}checked{% endif %}>
+                            Above MA 200
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-screener">Apply Filters</button>
+                    <a href="{% url 'screener' %}" class="btn-reset" style="text-decoration: none; display: block; text-align: center;">Reset</a>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <div class="results-header">
+                    <h2>Results</h2>
+                    <div class="results-count">
+                        {% if results_count %}
+                            {{ results_count }} stocks found
+                        {% else %}
+                            {{ total_stocks }} stocks available
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if not results %}
+                    <div class="no-data">
+                        <div class="no-data-icon">🔍</div>
+                        <h3>No filters applied</h3>
+                        <p>Use the filters on the left to screen stocks based on your criteria</p>
+                        {% if total_stocks == 0 %}
+                            <div class="info-banner" style="margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                                <p><strong>No stock data found.</strong> Please run the download command first:<br>
+                                <code>python manage.py download_stock_data</code></p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div style="overflow-x: auto;">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Symbol</th>
+                                    <th>Price</th>
+                                    <th>1D %</th>
+                                    <th>1W %</th>
+                                    <th>1M %</th>
+                                    <th>3M %</th>
+                                    <th>6M %</th>
+                                    <th>1Y %</th>
+                                    <th>RSI</th>
+                                    <th>MA 20</th>
+                                    <th>MA 50</th>
+                                    <th>MA 200</th>
+                                    <th>Vol Ratio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for result in results %}
+                                <tr>
+                                    <td class="symbol-cell">
+                                        <a href="{% url 'stock_detail' result.symbol %}" style="text-decoration:none; color:inherit;">
+                                            {{ result.symbol }}
+                                        </a>
+                                    </td>
+                                    <td class="price-cell">₹{{ result.indicators.current_price }}</td>
+                                    <td class="{% if result.indicators.pct_1d >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_1d|floatformat:2 }}%
+                                    </td>
+                                    <td class="{% if result.indicators.pct_1w >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_1w|floatformat:2 }}%
+                                    </td>
+                                    <td class="{% if result.indicators.pct_1m >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_1m|floatformat:2 }}%
+                                    </td>
+                                    <td class="{% if result.indicators.pct_3m >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_3m|floatformat:2 }}%
+                                    </td>
+                                    <td class="{% if result.indicators.pct_6m >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_6m|floatformat:2 }}%
+                                    </td>
+                                    <td class="{% if result.indicators.pct_1y >= 0 %}positive{% else %}negative{% endif %}">
+                                        {{ result.indicators.pct_1y|floatformat:2 }}%
+                                    </td>
+                                    <td>{{ result.indicators.rsi|default:"-" }}</td>
+                                    <td>{{ result.indicators.ma_20|default:"-" }}</td>
+                                    <td>{{ result.indicators.ma_50|default:"-" }}</td>
+                                    <td>{{ result.indicators.ma_200|default:"-" }}</td>
+                                    <td>{{ result.indicators.volume_ratio|default:"-" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
