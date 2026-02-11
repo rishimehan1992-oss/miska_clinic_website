@@ -28,7 +28,9 @@
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          item.classList.toggle('is-open');
+          const wasOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.has-dropdown').forEach((other) => other.classList.remove('is-open'));
+          if (!wasOpen) item.classList.add('is-open');
         }
       });
     }
