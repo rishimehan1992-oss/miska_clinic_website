@@ -363,13 +363,15 @@
                 {% if not results %}
                     <div class="no-data">
                         <div class="no-data-icon">🔍</div>
-                        <h3>No filters applied</h3>
-                        <p>Use the filters on the left to screen stocks based on your criteria</p>
+                        <h3>{% if total_stocks == 0 %}No stock data{% else %}View all stocks{% endif %}</h3>
+                        <p>{% if total_stocks == 0 %}Run the download command to populate data.{% else %}Click below to load all {{ total_stocks }} stocks, or use the filters to screen by criteria.{% endif %}</p>
                         {% if total_stocks == 0 %}
                             <div class="info-banner" style="margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
                                 <p><strong>No stock data found.</strong> Please run the download command first:<br>
                                 <code>python manage.py download_stock_data</code></p>
                             </div>
+                        {% else %}
+                            <a href="?show_all=1" class="btn-screener" style="display: inline-block; width: auto; padding: 12px 24px; margin-top: 20px; text-decoration: none; text-align: center;">Show all {{ total_stocks }} stocks</a>
                         {% endif %}
                     </div>
                 {% else %}

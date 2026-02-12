@@ -6,19 +6,25 @@ def home(request):
 
 def screener(request):
     """
-    Stock screener view with filtering capabilities
+    Stock screener view with filtering capabilities.
+    With no filters: shows all stocks. With filters: shows only matching stocks.
     """
     results = []
     filters = {}
     total_stocks = len(get_available_stocks())
-    
-    if request.method == 'GET' and any(key in request.GET for key in [
-        'min_price', 'max_price', 'min_pct_1d', 'max_pct_1d', 
-        'min_pct_1m', 'max_pct_1m', 'min_pct_3m', 'max_pct_3m',
-        'min_rsi', 'max_rsi', 'min_volume_ratio', 'above_ma_20',
-        'above_ma_50', 'above_ma_200'
-    ]):
-        # Extract filters from GET parameters
+    has_filters = request.method == 'GET' and any(
+        request.GET.get(key)
+        for key in [
+            'min_price', 'max_price', 'min_pct_1d', 'max_pct_1d',
+            'min_pct_1m', 'max_pct_1m', 'min_pct_3m', 'max_pct_3m',
+            'min_rsi', 'max_rsi', 'min_volume_ratio',
+            'above_ma_20', 'above_ma_50', 'above_ma_200',
+        ]
+    )
+    # Support "show all" with ?show_all=1 when no other filters
+    show_all = request.GET.get('show_all') == '1'
+
+    if has_filters:
         filters = {
             'min_price': float(request.GET.get('min_price')) if request.GET.get('min_price') else None,
             'max_price': float(request.GET.get('max_price')) if request.GET.get('max_price') else None,
@@ -35,20 +41,22 @@ def screener(request):
             'above_ma_50': request.GET.get('above_ma_50') == 'on',
             'above_ma_200': request.GET.get('above_ma_200') == 'on',
         }
-        
-        # Screen stocks
         results = screen_stocks(filters)
-        
-        # Sort by 1M return (descending) by default
+    elif show_all and total_stocks > 0:
+        # No filters: show all stocks (so user can see full universe)
+        results = screen_stocks({})
+
+    # Sort by 1M return (descending)
+    if results:
         results.sort(key=lambda x: x['indicators']['pct_1m'] or -999, reverse=True)
-    
+
     context = {
         'results': results,
         'filters': filters,
         'total_stocks': total_stocks,
         'results_count': len(results),
+        'show_all': show_all,
     }
-    
     return render(request, 'core/screener.html', context)
 
 
