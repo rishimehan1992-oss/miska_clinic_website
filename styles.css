@@ -2141,6 +2141,79 @@ body {
   margin-bottom: 32px;
   font-size: 0.95rem;
 }
+.hair-report-score {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 32px;
+  background: linear-gradient(135deg, var(--gold-bg) 0%, rgba(255,255,255,0.8) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+}
+.hair-report-score-inner {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hair-report-score-value {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.hair-report-score-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  margin-top: 4px;
+}
+.hair-report-score-level {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-top: 4px;
+}
+.hair-report-section {
+  margin-bottom: 32px;
+}
+.hair-report-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin: 0 0 8px;
+}
+.hair-report-section p {
+  color: var(--grey);
+  font-size: 0.95rem;
+  margin: 0 0 16px;
+}
+.hair-report-causes,
+.hair-report-treatments,
+.hair-report-tips {
+  margin: 0;
+  padding-left: 20px;
+}
+.hair-report-causes li,
+.hair-report-treatments li,
+.hair-report-tips li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+.hair-report-profile {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.hair-report-profile h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin: 0 0 16px;
+  text-transform: uppercase;
+}
 .hair-report-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

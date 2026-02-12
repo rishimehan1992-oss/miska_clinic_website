@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Free Hair Health Assessment at MIŠKA Bangalore. Complete our questionnaire and get a personalised hair profile and recommendations." />
+    <meta name="description" content="Free Hair Health Assessment at MIŠKA Bangalore. Discover root causes of hair loss, get a personalised hair health report and treatment recommendations." />
     <title>Hair Health Assessment | MIŠKA Clinic Bangalore</title>
     <link rel="icon" href="assets/miska-logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -85,17 +85,17 @@
         <nav class="breadcrumb">
           <a href="index.html">Home</a> / <a href="hair-transplant.html">Hair</a> / Hair Profile
         </nav>
-        <h1>Hair Health Assessment</h1>
-        <p class="page-hero-subtitle">Complete this quick questionnaire to get your personalised hair profile and recommendations from MIŠKA Clinic.</p>
+        <h1>Know the Root Cause of Your Hair Concern</h1>
+        <p class="page-hero-subtitle">Our free hair health assessment evaluates your scalp, hair quality, lifestyle, and medical factors. Get a personalised report with root cause analysis and tailored recommendations — not just for transplant, but for overall hair health.</p>
       </section>
 
       <section class="section hair-profile-section">
-        <div class="container" style="max-width: 700px; margin: 0 auto;">
+        <div class="container" style="max-width: 680px; margin: 0 auto;">
           <form id="hairProfileForm" class="hair-profile-form">
             <div class="hair-profile-progress">
-              <div class="hair-profile-progress-bar" id="progressBar" style="width: 20%;"></div>
+              <div class="hair-profile-progress-bar" id="progressBar" style="width: 14%;"></div>
             </div>
-            <p class="hair-profile-step-label" id="stepLabel">Step 1 of 5</p>
+            <p class="hair-profile-step-label" id="stepLabel">Step 1 of 7</p>
 
             <!-- Step 1: Basic Info -->
             <div class="hair-profile-step" data-step="1">
@@ -108,6 +108,11 @@
                   <option value="female">Female</option>
                 </select>
               </label>
+            </div>
+
+            <!-- Step 2: Hair Loss Pattern -->
+            <div class="hair-profile-step" data-step="2" hidden>
+              <h2>Hair Loss & Thinning Pattern</h2>
               <label>How long have you been experiencing hair loss or thinning?
                 <select name="duration">
                   <option value="">Select</option>
@@ -115,21 +120,6 @@
                   <option value="1y">6 months – 2 years</option>
                   <option value="3y">2 – 5 years</option>
                   <option value="5y">More than 5 years</option>
-                </select>
-              </label>
-            </div>
-
-            <!-- Step 2: Family & Pattern -->
-            <div class="hair-profile-step" data-step="2" hidden>
-              <h2>Family History & Pattern</h2>
-              <label>Does anyone in your family have hair loss?
-                <select name="familyHistory">
-                  <option value="">Select</option>
-                  <option value="yes_father">Yes, father</option>
-                  <option value="yes_mother">Yes, mother</option>
-                  <option value="yes_both">Yes, both parents</option>
-                  <option value="yes_other">Yes, other relative</option>
-                  <option value="no">No</option>
                 </select>
               </label>
               <label>Where is your main concern?
@@ -141,7 +131,17 @@
                   <option value="multiple">Multiple areas</option>
                 </select>
               </label>
-              <label>Which best describes your hairline? (Select the stage that matches you)
+              <label>Does anyone in your family have hair loss?
+                <select name="familyHistory">
+                  <option value="">Select</option>
+                  <option value="yes_father">Yes, father</option>
+                  <option value="yes_mother">Yes, mother</option>
+                  <option value="yes_both">Yes, both parents</option>
+                  <option value="yes_other">Yes, other relative</option>
+                  <option value="no">No</option>
+                </select>
+              </label>
+              <label>Hairline / stage (select what best matches you)
                 <select name="hairlineStage">
                   <option value="">Select</option>
                   <option value="1">1 – Minimal (slight temple recession)</option>
@@ -153,9 +153,17 @@
               </label>
             </div>
 
-            <!-- Step 3: Scalp & Hair -->
+            <!-- Step 3: Hair & Scalp Health -->
             <div class="hair-profile-step" data-step="3" hidden>
-              <h2>Scalp & Hair Characteristics</h2>
+              <h2>Hair & Scalp Health</h2>
+              <label>How much hair do you shed daily? (when combing, washing)
+                <select name="shedding">
+                  <option value="">Select</option>
+                  <option value="normal">Normal (~50–100 strands)</option>
+                  <option value="moderate">Moderate (noticeable on brush)</option>
+                  <option value="heavy">Heavy (clumps, visible thinning)</option>
+                </select>
+              </label>
               <label>Any scalp issues?
                 <select name="scalpIssues">
                   <option value="">Select</option>
@@ -165,6 +173,14 @@
                   <option value="oily">Oily scalp</option>
                   <option value="dry">Dry scalp</option>
                   <option value="multiple">Multiple issues</option>
+                </select>
+              </label>
+              <label>Do you experience breakage, split ends, or brittle hair?
+                <select name="breakage">
+                  <option value="">Select</option>
+                  <option value="none">Rarely / None</option>
+                  <option value="some">Some</option>
+                  <option value="significant">Significant</option>
                 </select>
               </label>
               <label>Hair texture
@@ -185,15 +201,31 @@
               </label>
             </div>
 
-            <!-- Step 4: Lifestyle & Medical -->
+            <!-- Step 4: Lifestyle -->
             <div class="hair-profile-step" data-step="4" hidden>
-              <h2>Lifestyle & Medical</h2>
+              <h2>Lifestyle & Habits</h2>
               <label>Stress level
                 <select name="stress">
                   <option value="">Select</option>
                   <option value="low">Low</option>
                   <option value="moderate">Moderate</option>
                   <option value="high">High</option>
+                </select>
+              </label>
+              <label>How would you rate your sleep quality?
+                <select name="sleep">
+                  <option value="">Select</option>
+                  <option value="good">Good (7+ hrs, restful)</option>
+                  <option value="average">Average (5–7 hrs)</option>
+                  <option value="poor">Poor (irregular, &lt;5 hrs)</option>
+                </select>
+              </label>
+              <label>Diet & nutrition
+                <select name="diet">
+                  <option value="">Select</option>
+                  <option value="balanced">Balanced (protein, fruits, veggies)</option>
+                  <option value="average">Average</option>
+                  <option value="poor">Poor / restricted / irregular</option>
                 </select>
               </label>
               <label>Do you smoke?
@@ -203,7 +235,12 @@
                   <option value="yes">Yes</option>
                 </select>
               </label>
-              <label>Any known conditions that can affect hair? (thyroid, anaemia, PCOS, etc.)
+            </div>
+
+            <!-- Step 5: Medical -->
+            <div class="hair-profile-step" data-step="5" hidden>
+              <h2>Medical & Treatment History</h2>
+              <label>Any known conditions that can affect hair?
                 <select name="medicalConditions">
                   <option value="">Select</option>
                   <option value="none">None</option>
@@ -226,14 +263,44 @@
               </label>
             </div>
 
-            <!-- Step 5: Goals & Contact -->
-            <div class="hair-profile-step" data-step="5" hidden>
+            <!-- Step 6: Hair Care -->
+            <div class="hair-profile-step" data-step="6" hidden>
+              <h2>Hair Care Routine</h2>
+              <label>How often do you use heat styling (blow dryer, straightener, curler)?
+                <select name="heatStyling">
+                  <option value="">Select</option>
+                  <option value="rarely">Rarely / Never</option>
+                  <option value="weekly">1–3 times a week</option>
+                  <option value="daily">Almost daily</option>
+                </select>
+              </label>
+              <label>Chemical treatments (colouring, perming, relaxing) in the last year?
+                <select name="chemicals">
+                  <option value="">Select</option>
+                  <option value="none">None</option>
+                  <option value="occasional">Occasional (1–2 times)</option>
+                  <option value="regular">Regular (multiple times)</option>
+                </select>
+              </label>
+              <label>How often do you wash your hair?
+                <select name="washFreq">
+                  <option value="">Select</option>
+                  <option value="daily">Daily</option>
+                  <option value="alt">Alternate days</option>
+                  <option value="2-3">2–3 times a week</option>
+                  <option value="less">Less than twice a week</option>
+                </select>
+              </label>
+            </div>
+
+            <!-- Step 7: Goals & Contact -->
+            <div class="hair-profile-step" data-step="7" hidden>
               <h2>Goals & Contact</h2>
               <label>Primary goal
                 <select name="goal">
                   <option value="">Select</option>
                   <option value="stop">Stop further loss</option>
-                  <option value="restore">Restore density</option>
+                  <option value="restore">Restore density / regrow</option>
                   <option value="transplant">Hair transplant</option>
                   <option value="consult">Just exploring / consultation</option>
                 </select>
@@ -258,8 +325,8 @@
           </form>
 
           <div id="hairProfileReport" class="hair-profile-report" hidden>
-            <h2>Your Hair Profile Report</h2>
-            <p class="hair-report-intro">Based on your responses, here is your personalised hair health summary. This is indicative — a physical consultation at MIŠKA will provide an accurate assessment.</p>
+            <h2>Your Personalised Hair Health Report</h2>
+            <p class="hair-report-intro">Based on your responses, this report analyses likely root causes and recommends a path forward. A physical consultation at MIŠKA will provide an accurate diagnosis and treatment plan.</p>
             <div class="hair-report-content" id="hairReportContent"></div>
             <div class="hair-report-cta">
               <h3>Next Step: Free Consultation</h3>
@@ -311,7 +378,7 @@
         var btnNext = document.getElementById('btnNext');
         var btnSubmit = document.getElementById('btnSubmit');
         var currentStep = 1;
-        var totalSteps = 5;
+        var totalSteps = 7;
 
         function showStep(n) {
           steps.forEach(function(s) { s.hidden = parseInt(s.dataset.step) !== n; });
@@ -347,40 +414,93 @@
           var data = {};
           fd.forEach(function(v, k) { data[k] = v; });
 
-          var hairlineLabels = { '1':'Minimal', '2':'Mild', '3':'Moderate', '4':'Advanced', '5':'Extensive' };
-          var durationLabels = { '6m':'Less than 6 months', '1y':'6 months – 2 years', '3y':'2 – 5 years', '5y':'More than 5 years' };
-          var goalLabels = { 'stop':'Stop further loss', 'restore':'Restore density', 'transplant':'Hair transplant', 'consult':'Consultation' };
+          // --- ROOT CAUSE ANALYSIS ---
+          var causes = [];
+          if (data.familyHistory && data.familyHistory !== 'no') causes.push({ name: 'Genetics', desc: 'Family history suggests hereditary pattern (androgenic alopecia). Early intervention can slow progression.', priority: 'high' });
+          if (data.stress === 'high') causes.push({ name: 'Stress', desc: 'High stress can trigger telogen effluvium (excessive shedding). Managing stress and sleep can help.', priority: 'high' });
+          if (data.sleep === 'poor') causes.push({ name: 'Sleep', desc: 'Poor sleep affects hair cycle and growth hormones. Improving sleep quality supports hair health.', priority: 'medium' });
+          if (data.diet === 'poor') causes.push({ name: 'Nutrition', desc: 'Diet may lack protein, iron, biotin, or vitamin D. A balanced diet supports hair growth.', priority: 'high' });
+          if (data.medicalConditions && data.medicalConditions !== 'none') causes.push({ name: 'Medical', desc: 'Thyroid, anaemia, PCOS, or other conditions can cause hair loss. Addressing these is key.', priority: 'high' });
+          if (data.scalpIssues && data.scalpIssues !== 'none') causes.push({ name: 'Scalp Health', desc: 'Scalp issues (dandruff, oiliness, dryness) can weaken follicles. Scalp treatments help.', priority: 'medium' });
+          if (data.breakage === 'significant' || data.heatStyling === 'daily' || data.chemicals === 'regular') causes.push({ name: 'Hair Damage', desc: 'Breakage, heat, or chemical damage weakens hair. Gentler care and treatments can restore strength.', priority: 'medium' });
+          if (data.shedding === 'heavy') causes.push({ name: 'Excessive Shedding', desc: 'Heavy shedding may indicate telogen effluvium or pattern loss. Professional evaluation recommended.', priority: 'high' });
+          if (data.smoking === 'yes') causes.push({ name: 'Smoking', desc: 'Smoking reduces blood flow to follicles. Quitting supports hair health.', priority: 'medium' });
+          if (causes.length === 0) causes.push({ name: 'Multiple factors', desc: 'Hair concerns often have several contributors. A consultation will help identify the main ones.', priority: 'medium' });
 
-          var html = '<div class="hair-report-grid">';
-          html += '<div class="hair-report-card"><h4>Profile Summary</h4><ul>';
-          html += '<li><strong>Age:</strong> ' + (data.age || '—') + '</li>';
-          html += '<li><strong>Gender:</strong> ' + (data.gender === 'male' ? 'Male' : 'Female') + '</li>';
-          html += '<li><strong>Hair loss duration:</strong> ' + (durationLabels[data.duration] || data.duration || '—') + '</li>';
-          html += '<li><strong>Main concern:</strong> ' + (data.mainConcern ? data.mainConcern.replace(/_/g, ' ') : '—') + '</li>';
-          html += '<li><strong>Hairline stage:</strong> ' + (hairlineLabels[data.hairlineStage] || data.hairlineStage || '—') + '</li>';
-          html += '<li><strong>Goal:</strong> ' + (goalLabels[data.goal] || data.goal || '—') + '</li>';
-          html += '</ul></div>';
-
-          html += '<div class="hair-report-card"><h4>Hair & Scalp</h4><ul>';
-          html += '<li><strong>Scalp:</strong> ' + (data.scalpIssues || 'None reported') + '</li>';
-          html += '<li><strong>Texture:</strong> ' + (data.hairTexture || '—') + '</li>';
-          html += '<li><strong>Thickness:</strong> ' + (data.hairThickness || '—') + '</li>';
-          html += '<li><strong>Family history:</strong> ' + (data.familyHistory ? 'Yes' : 'No') + '</li>';
-          html += '</ul></div>';
-
-          html += '<div class="hair-report-card"><h4>Lifestyle & History</h4><ul>';
-          html += '<li><strong>Stress:</strong> ' + (data.stress || '—') + '</li>';
-          html += '<li><strong>Smoking:</strong> ' + (data.smoking === 'yes' ? 'Yes' : 'No') + '</li>';
-          html += '<li><strong>Medical conditions:</strong> ' + (data.medicalConditions || 'None') + '</li>';
-          html += '<li><strong>Previous treatment:</strong> ' + (data.previousTreatment || 'None') + '</li>';
-          html += '</ul></div></div>';
-
+          // --- RECOMMENDED TREATMENTS (personalised) ---
+          var treatments = [];
           var stage = parseInt(data.hairlineStage) || 3;
+          var goal = data.goal || 'consult';
+
+          if (data.medicalConditions && data.medicalConditions !== 'none') treatments.push({ name: 'Medical workup', desc: 'Get thyroid, iron, vitamin D, and hormonal panels checked. Treating underlying conditions often improves hair.', priority: 1 });
+          if (data.scalpIssues && data.scalpIssues !== 'none') treatments.push({ name: 'Scalp treatment', desc: 'Medicated shampoos, PRP, or specialised scalp therapies to improve follicle health.', priority: 2 });
+          if (data.stress === 'high' || data.sleep === 'poor') treatments.push({ name: 'Lifestyle & nutrition', desc: 'Stress management, better sleep, balanced diet rich in protein, iron, biotin. Supplements if deficient.', priority: 2 });
+          if (data.breakage === 'significant' || data.heatStyling === 'daily') treatments.push({ name: 'Reduce damage', desc: 'Limit heat styling, use heat protectant, avoid harsh chemicals. Deep conditioning and protein treatments.', priority: 2 });
+          if (stage <= 3 && (goal === 'stop' || goal === 'restore')) treatments.push({ name: 'PRP or medication', desc: 'PRP stimulates follicles; minoxidil/finasteride (as prescribed) can slow loss and regrow. Best started early.', priority: 2 });
+          if (stage >= 4 || goal === 'transplant') treatments.push({ name: 'Hair transplant', desc: 'For advanced loss or when medical options are insufficient. FUE/DHI offer natural, permanent results.', priority: 3 });
+
+          treatments.sort(function(a,b) { return a.priority - b.priority; });
+
+          // --- HAIR HEALTH SUMMARY ---
+          var healthScore = 100;
+          if (data.shedding === 'heavy') healthScore -= 25;
+          else if (data.shedding === 'moderate') healthScore -= 10;
+          if (data.stress === 'high') healthScore -= 15;
+          if (data.diet === 'poor') healthScore -= 15;
+          if (data.scalpIssues && data.scalpIssues !== 'none') healthScore -= 10;
+          if (data.medicalConditions && data.medicalConditions !== 'none') healthScore -= 15;
+          if (data.breakage === 'significant') healthScore -= 10;
+          healthScore = Math.max(20, Math.min(95, healthScore));
+          var healthLevel = healthScore >= 70 ? 'Moderate' : healthScore >= 50 ? 'Needs attention' : 'Requires intervention';
+
+          // --- TRANSPLANT ESTIMATE (when relevant) ---
           var graftRange = stage <= 1 ? '1,500–2,000' : stage <= 2 ? '2,000–3,000' : stage <= 3 ? '2,800–4,000' : stage <= 4 ? '4,000–6,000' : '5,500–9,000';
           var costRange = stage <= 1 ? '₹35,000' : stage <= 2 ? '₹35,000–₹45,000' : stage <= 3 ? '₹45,000–₹55,000' : stage <= 4 ? '₹55,000–₹65,000' : '₹65,000–₹80,000';
 
-          html += '<div class="hair-report-estimate"><h4>Indicative Estimate (if considering transplant)</h4>';
-          html += '<p>Based on your hairline stage: <strong>~' + graftRange + ' grafts</strong>, estimated cost <strong>' + costRange + '</strong>. Exact figures will be confirmed during consultation.</p></div>';
+          // --- PERSONALISED TIPS ---
+          var tips = [];
+          if (data.diet === 'poor') tips.push('Include protein-rich foods (eggs, lentils, nuts), spinach, and vitamin D sources.');
+          if (data.sleep === 'poor') tips.push('Aim for 7–8 hours of quality sleep; it supports hair growth cycles.');
+          if (data.heatStyling === 'daily') tips.push('Use heat protectant and lower heat settings; air-dry when possible.');
+          if (data.washFreq === 'daily' && (data.scalpIssues === 'dry' || data.hairThickness === 'fine')) tips.push('Consider washing every other day to retain natural oils.');
+          if (data.stress === 'high') tips.push('Stress management (exercise, meditation) can reduce hair shedding.');
+          if (tips.length === 0) tips.push('Maintain a balanced diet, gentle hair care, and regular scalp health.');
+
+          // --- BUILD REPORT HTML ---
+          var html = '';
+
+          html += '<div class="hair-report-score"><div class="hair-report-score-inner"><span class="hair-report-score-value">' + healthScore + '</span><span class="hair-report-score-label">Hair Health Score</span><span class="hair-report-score-level">' + healthLevel + '</span></div></div>';
+
+          html += '<div class="hair-report-section"><h3>Root Cause Analysis</h3><p>Based on your answers, these factors may be affecting your hair:</p><ul class="hair-report-causes">';
+          causes.forEach(function(c) {
+            html += '<li><strong>' + c.name + ':</strong> ' + c.desc + '</li>';
+          });
+          html += '</ul></div>';
+
+          html += '<div class="hair-report-section"><h3>Recommended Path</h3><p>We suggest addressing these in order:</p><ol class="hair-report-treatments">';
+          treatments.forEach(function(t) {
+            html += '<li><strong>' + t.name + '</strong> — ' + t.desc + '</li>';
+          });
+          html += '</ol></div>';
+
+          html += '<div class="hair-report-section"><h3>Personalised Tips</h3><ul class="hair-report-tips">';
+          tips.forEach(function(t) {
+            html += '<li>' + t + '</li>';
+          });
+          html += '</ul></div>';
+
+          if (stage >= 3 || goal === 'transplant') {
+            html += '<div class="hair-report-estimate"><h4>If Considering Hair Transplant</h4><p>Based on your hairline stage: <strong>~' + graftRange + ' grafts</strong>, estimated cost <strong>' + costRange + '</strong>. Exact figures confirmed at consultation.</p></div>';
+          }
+
+          html += '<div class="hair-report-profile"><h4>Your Profile Summary</h4><div class="hair-report-grid"><div class="hair-report-card"><ul>';
+          html += '<li><strong>Age:</strong> ' + (data.age || '—') + '</li><li><strong>Gender:</strong> ' + (data.gender === 'male' ? 'Male' : 'Female') + '</li>';
+          html += '<li><strong>Duration:</strong> ' + (data.duration === '6m' ? '&lt;6 months' : data.duration === '1y' ? '6 months–2 years' : data.duration === '3y' ? '2–5 years' : data.duration === '5y' ? '5+ years' : '—') + '</li>';
+          html += '</ul></div><div class="hair-report-card"><ul>';
+          html += '<li><strong>Scalp:</strong> ' + (data.scalpIssues || 'None') + '</li><li><strong>Shedding:</strong> ' + (data.shedding || '—') + '</li><li><strong>Texture:</strong> ' + (data.hairTexture || '—') + '</li>';
+          html += '</ul></div><div class="hair-report-card"><ul>';
+          html += '<li><strong>Stress:</strong> ' + (data.stress || '—') + '</li><li><strong>Diet:</strong> ' + (data.diet || '—') + '</li><li><strong>Medical:</strong> ' + (data.medicalConditions || 'None') + '</li>';
+          html += '</ul></div></div></div>';
 
           reportContent.innerHTML = html;
           form.hidden = true;
