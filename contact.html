@@ -91,8 +91,57 @@
 
       <section class="section">
         <div class="container">
-          <div class="consult-inner" style="max-width: 900px; margin: 0 auto;">
-            <div class="contact-grid" style="margin-bottom: 48px;">
+          <div class="contact-page-inner">
+            <div class="contact-form-card" id="contactFormSection">
+              <div class="contact-form-header">
+                <h2>Book Free Consultation</h2>
+                <p>Fill in your details and we'll call you back within 24 hours.</p>
+                <div class="contact-form-quick-actions">
+                  <a href="tel:+919380843143" class="btn btn-outline btn-sm">📞 Call</a>
+                  <a href="https://wa.me/919380843143" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm">WhatsApp</a>
+                </div>
+              </div>
+              <form class="consult-form js-lead-form" id="leadForm" aria-label="Consultation request">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="leadName">Name</label>
+                    <input type="text" name="name" id="leadName" placeholder="Your name" required autocomplete="name" />
+                  </div>
+                  <div class="form-group">
+                    <label for="leadPhone">Phone</label>
+                    <input type="tel" name="phone" id="leadPhone" placeholder="10-digit mobile" required autocomplete="tel" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="serviceRequired">Service required</label>
+                    <select name="serviceRequired" id="serviceRequired">
+                      <option value="">Select</option>
+                      <option value="Hair">Hair</option>
+                      <option value="Skin">Skin</option>
+                      <option value="Dental">Dental</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="preferredTime">Preferred time</label>
+                    <select name="preferredTime" id="preferredTime">
+                      <option value="">Select time slot</option>
+                      <option value="9 AM - 12 PM">9 AM – 12 PM</option>
+                      <option value="12 PM - 3 PM">12 PM – 3 PM</option>
+                      <option value="3 PM - 6 PM">3 PM – 6 PM</option>
+                      <option value="6 PM - 7 PM">6 PM – 7 PM</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="leadMessage">Message <span class="form-optional">(optional)</span></label>
+                  <textarea name="message" id="leadMessage" placeholder="Brief description of your enquiry" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-gold btn-block">Submit — We'll Call You</button>
+              </form>
+            </div>
+
+            <div class="contact-grid" style="margin-top: 48px;">
               <div class="contact-card">
                 <h3>Phone</h3>
                 <p><a href="tel:+919380843143">+91 93808 43143</a></p>
@@ -109,29 +158,6 @@
                 <h3>Hours</h3>
                 <p>Mon–Fri 9AM–7PM<br />Sat 9AM–2PM</p>
               </div>
-            </div>
-
-            <div class="contact-form-layout">
-              <div>
-                <h2 style="margin-top: 0;">Book Free Consultation</h2>
-                <p>Fill in your details and we'll call you back within 24 hours to schedule your consultation.</p>
-                <p><a href="tel:+919380843143" class="btn btn-gold">Call Now</a>
-                <a href="https://wa.me/919380843143" target="_blank" rel="noopener" class="btn btn-whatsapp">WhatsApp</a></p>
-              </div>
-              <form class="consult-form" id="leadForm" aria-label="Consultation request">
-                <input type="text" name="name" placeholder="Your Name" required autocomplete="name" />
-                <input type="tel" name="phone" placeholder="Phone Number" required autocomplete="tel" />
-                <label for="preferredTime" style="display:block; margin-bottom: 8px; font-size: 0.95rem; color: var(--grey, #555);">Preferred time to contact</label>
-                <select name="preferredTime" id="preferredTime">
-                  <option value="">Select a time slot</option>
-                  <option value="9 AM - 12 PM">9 AM – 12 PM</option>
-                  <option value="12 PM - 3 PM">12 PM – 3 PM</option>
-                  <option value="3 PM - 6 PM">3 PM – 6 PM</option>
-                  <option value="6 PM - 7 PM">6 PM – 7 PM</option>
-                </select>
-                <textarea name="message" placeholder="Message (optional)" rows="3"></textarea>
-                <button type="submit" class="btn btn-primary btn-block">Submit — We'll Call You</button>
-              </form>
             </div>
           </div>
         </div>

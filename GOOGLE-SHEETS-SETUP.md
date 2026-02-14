@@ -55,7 +55,7 @@ function doPost(e) {
 - Create two tabs in your Google Sheet: **"Contact"** and **"Hair Profile"**.
 - Add header rows in row 1. Suggested headers:
 
-  **Contact tab:** `formType | source | name | phone | preferredTime | message`
+  **Contact tab:** `formType | source | name | phone | serviceRequired | preferredTime | message`
   
   **Hair Profile tab:** `formType | source | age | gender | duration | mainConcern | familyHistory | hairlineStage | shedding | scalpIssues | breakage | hairTexture | hairThickness | stress | sleep | diet | smoking | medicalConditions | previousTreatment | heatStyling | chemicals | washFreq | goal | name | phone | email | contactPref`
 
