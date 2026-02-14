@@ -56,31 +56,42 @@
     });
   }
 
-  // Lead form
+  // Lead form – sends to Google Sheets
   const leadForm = document.getElementById('leadForm');
   if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
+    leadForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const sheetsUrl = 'https://script.google.com/macros/s/AKfycbw161634j-ygURP7gc12WfCSd6xwhovYxHBxKMULgQ78dj0G6TVdNKxzQAhHPS1f_GgNw/exec';
       const btn = leadForm.querySelector('button[type="submit"]');
       const originalText = btn.textContent;
 
-      // Show loading
       btn.disabled = true;
       btn.textContent = 'Submitting…';
 
-      // Simulate submit - replace with Formspree/Web3Forms when ready
-      setTimeout(() => {
-        btn.textContent = 'Thank you! We will call you soon.';
-        btn.style.background = '#059669';
-        leadForm.reset();
+      const fd = new FormData(leadForm);
+      const data = { formType: 'contact', source: 'contact_page' };
+      fd.forEach((v, k) => { data[k] = v; });
 
-        // Reset after 4s
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = originalText;
-          btn.style.background = '';
-        }, 4000);
-      }, 800);
+      try {
+        await fetch(sheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(data)
+        });
+      } catch (err) {
+        console.warn('Form submit to sheet failed:', err);
+      }
+
+      btn.textContent = 'Thank you! We will call you soon.';
+      btn.style.background = '#059669';
+      leadForm.reset();
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 4000);
     });
   }
 

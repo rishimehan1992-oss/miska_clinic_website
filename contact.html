@@ -121,6 +121,14 @@
               <form class="consult-form" id="leadForm" aria-label="Consultation request">
                 <input type="text" name="name" placeholder="Your Name" required autocomplete="name" />
                 <input type="tel" name="phone" placeholder="Phone Number" required autocomplete="tel" />
+                <label for="preferredTime" style="display:block; margin-bottom: 8px; font-size: 0.95rem; color: var(--grey, #555);">Preferred time to contact</label>
+                <select name="preferredTime" id="preferredTime">
+                  <option value="">Select a time slot</option>
+                  <option value="9 AM - 12 PM">9 AM – 12 PM</option>
+                  <option value="12 PM - 3 PM">12 PM – 3 PM</option>
+                  <option value="3 PM - 6 PM">3 PM – 6 PM</option>
+                  <option value="6 PM - 7 PM">6 PM – 7 PM</option>
+                </select>
                 <textarea name="message" placeholder="Message (optional)" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary btn-block">Submit — We'll Call You</button>
               </form>

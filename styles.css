@@ -992,6 +992,7 @@ body {
 }
 
 .consult-form input,
+.consult-form select,
 .consult-form textarea {
   padding: 16px 20px;
   font-family: inherit;
@@ -1499,6 +1500,7 @@ body {
   }
 
   .consult-form input,
+  .consult-form select,
   .consult-form textarea {
     min-height: 48px;
     font-size: 16px;

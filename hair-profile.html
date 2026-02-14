@@ -411,8 +411,17 @@
           if (!validateStep()) return;
 
           var fd = new FormData(form);
-          var data = {};
+          var data = { formType: 'hair_profile', source: 'hair_profile_page' };
           fd.forEach(function(v, k) { data[k] = v; });
+
+          // Send to Google Sheets
+          var SHEETS_URL = 'https://script.google.com/macros/s/AKfycbw161634j-ygURP7gc12WfCSd6xwhovYxHBxKMULgQ78dj0G6TVdNKxzQAhHPS1f_GgNw/exec';
+          fetch(SHEETS_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(data)
+          }).catch(function(err) { console.warn('Sheet submit failed:', err); });
 
           // --- ROOT CAUSE ANALYSIS ---
           var causes = [];
