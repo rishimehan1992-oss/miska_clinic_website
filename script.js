@@ -89,7 +89,7 @@
       <div class="contact-popup-overlay" id="contactPopup" aria-hidden="true">
         <div class="contact-popup">
           <button class="contact-popup-close" aria-label="Close">&times;</button>
-          <h3>Book a Free Consultation</h3>
+          <h3>Book Consultation</h3>
           <p>Fill in your details and we'll call you back within 24 hours.</p>
           <form class="consult-form js-lead-form" aria-label="Consultation request">
             <input type="text" name="name" placeholder="Your Name" required autocomplete="name" />
